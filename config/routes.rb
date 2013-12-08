@@ -1,4 +1,6 @@
 Lunchmo::Application.routes.draw do
+  devise_for :users
+  root :to => "jobs#index"
   get "jobs/hello"
   resources :jobs
   #get "jobs/index"

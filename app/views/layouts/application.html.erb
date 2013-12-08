@@ -5,10 +5,63 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+	<style>
+		body	{ font-family: /*'Corben',*/ Courier, sans-serif; background-color: #CCC; }
+		h1	{ clear: both; font-size: 1.5em; }
+		h2	{ clear: both; margin-top: 1em; font-size: 1em; margin-bottom: 0em; }
+		p	{ margin-top: .25em; margin-bottom: 0; }
+		.nav	{ clear: both; padding: 8px; }
+		.nav li	{ display: inline-block; margin-right: 8px; list-style-type: none; }
+		.container	{ margin-left: auto; margin-right: auto; width: 900px; border-style: groove; padding: 8px; }
+		a	{ text-decoration: underline; color: black; }
+		.jumbotron	{ padding: 8px; }
+		#sidebar	{ padding: 8px; }
+		.job	{ padding: 8px; }
+		.active	{ text-decoration: none; }
+	</style>
 </head>
 <body>
 
-<%= yield %>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+<!--        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Casual Jobs</a>
+        </div>
+-->
+          <div class="jumbotron">
+            <h1>Lunch Money</h1>
+            <p>Find a gig, make some cash.</p>
+          </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">All</a>
+            <a href="#" class="list-group-item">Research Studies</a>
+            <a href="#" class="list-group-item">Computer</a>
+            <a href="#" class="list-group-item">Babysitting</a>
+            <a href="#" class="list-group-item">Dog Walking</a>
+            <a href="#" class="list-group-item">Misc.</a>
+          </div>
+        </div><!--/span-->
+
+	<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+	<%= render 'layouts/user_widget' %>
+
+	<%= yield %>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
 </body>
 </html>
