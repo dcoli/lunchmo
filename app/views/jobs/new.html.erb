@@ -1,0 +1,31 @@
+<!--    t.string   "title"
+    t.text     "details"
+    t.string   "pay_type"
+    t.string   "work_unit"
+    t.decimal  "pay_rate",   precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+-->
+<%= form_tag( controller: jobs, action: create ) do %>
+  <%= label_tag(:title, "Job title:") %>
+  <%= text_field_tag( :title ) %>
+  <%= text_area_tag( :details ) %>
+
+  <%= radio_button_tag(:pay_type, "hourly") %>
+	<%= label_tag(:pay_hourly, "hourly") %>
+	<%= radio_button_tag(:pay_type, "daily") %>
+	<%= label_tag(:pay_weekly, "daily") %>
+	<%= radio_button_tag(:pay_type, "weekly") %>
+	<%= label_tag(:pay_weekly, "weekly") %>
+	<%= radio_button_tag(:pay_type, "per_unit") %>
+	<%= label_tag(:pay_unit, "per unit") %>
+	<%= radio_button_tag(:pay_type, "lump_sum") %>
+	<%= label_tag(:pay_lump, "lump sum") %>
+
+	
+
+  <%= check_box_tag( :flyering ) %>
+  <%= label_tag(:flyering, "Post my job around campus on flyers") %>
+  <%= submit_tag("Submit") %>
+<% end %>
