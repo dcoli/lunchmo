@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212030300) do
+ActiveRecord::Schema.define(version: 20131228140555) do
 
   create_table "jobs", force: true do |t|
     t.string   "title"
@@ -23,7 +23,13 @@ ActiveRecord::Schema.define(version: 20131212030300) do
     t.datetime "updated_at"
     t.string   "currency"
     t.boolean  "flyering"
+    t.integer  "users_id"
+    t.integer  "user_id"
+    t.datetime "job_time"
   end
+
+  add_index "jobs", ["updated_at"], name: "index_jobs_on_updated_at", using: :btree
+  add_index "jobs", ["users_id"], name: "index_jobs_on_users_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -36,11 +42,20 @@ ActiveRecord::Schema.define(version: 20131212030300) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 6,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
 end

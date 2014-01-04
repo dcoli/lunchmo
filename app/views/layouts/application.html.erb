@@ -37,11 +37,13 @@
           <div class="jumbotron">
             <h1>Lunch Money</h1>
             <p>Find a gig, make some cash.</p>
+            <p>&nbsp;</p>
+            <%= render 'layouts/user_widget' %>
           </div>
       </div><!-- /.container -->
     </div><!-- /.navbar -->
 
-    <div class="container">
+<!--    <div class="container">
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="list-group">
@@ -52,12 +54,11 @@
             <a href="#" class="list-group-item">Dog Walking</a>
             <a href="#" class="list-group-item">Misc.</a>
           </div>
-        </div><!--/span-->
+        </div>
+-->
 
 	<p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
-	<%= render 'layouts/user_widget' %>
 
 	<%= yield %>
 

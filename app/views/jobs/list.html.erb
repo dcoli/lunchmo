@@ -1,0 +1,16 @@
+<div>
+	<%= link_to "Post a new job", controller: "jobs", action: "new" %>
+</div>
+
+<ul>
+	<% if @jobs != nil %>
+		<% @jobs.each do |j| %>
+			<li><strong><%= link_to j.title, action: "show", controller: "jobs", id: j.id %></strong>
+			 - <smaller><%= distance_of_time_in_words_to_now( j.updated_at ) %> ago</smaller>
+				<% if current_user.id == j.user_id %>
+					<%= link_to "Edit", controller: "jobs", action: "edit", id: j.id %>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

@@ -7,24 +7,54 @@
     t.datetime "updated_at"
     t.string   "currency"
 -->
-<%= form_tag( controller: jobs, action: update ) do %>
-  <%= label_tag(:title, "Job title:") %>
-  <%= text_field_tag( :title ) %>
-  <%= text_area_tag( :details ) %>
-
-  <%= radio_button_tag(:pay_type, "hourly") %>
-	<%= label_tag(:pay_hourly, "hourly") %>
-	<%= radio_button_tag(:pay_type, "daily") %>
-	<%= label_tag(:pay_weekly, "daily") %>
-	<%= radio_button_tag(:pay_type, "weekly") %>
-	<%= label_tag(:pay_weekly, "weekly") %>
-	<%= radio_button_tag(:pay_type, "per_unit") %>
-	<%= label_tag(:pay_unit, "per unit") %>
-	<%= radio_button_tag(:pay_type, "lump_sum") %>
-	<%= label_tag(:pay_lump, "lump sum") %>
-
-
-  <%= check_box_tag( :flyering ) %>
-  <%= label_tag(:flyering, "Post my job around campus on flyers") %>
+<%= form_for @job do |j| %>
+  <%= j.hidden_field :user_id %>
+<div>
+  <%= j.label :title %>
+  <%= j.text_field :title %>
+</div>
+<div>
+  <%= j.label :details %>
+  <%= j.text_area :details %>
+</div>
+<div>
+  <%= j.label :job_time %>
+  <%= j.datetime_local_field :job_time %>
+</div>
+<div>
+<fieldset>
+  <legend>Currency</legend>
+  <%= j.radio_button :currency, "dollars" %>
+  <%= label :job, :currency, "dollars" %>
+  <%= j.radio_button :currency, "A's" %>
+  <%= label :job, :currency, "A's" %>
+  <%= j.radio_button :currency, "pizzas" %>
+  <%= label :job, :currency, "pizzas" %>
+</div>
+<div>
+  <%= j.label :pay_rate %>
+    <input type="number" id="job_pay_rate" name="job[pay_rate]" min="0" max="999999" step="0.01" size="4" 
+    title="CDA Currency Format - no dollar sign and no comma(s) - cents (.##) are optional" value="<%= @job.pay_rate %>"/>
+</div>
+<fieldset>
+  <legend>Pay type</legend>
+  <%= j.radio_button :pay_type, "hourly" %>
+  <%= label :job, :pay_type, "hourly" %>
+  <%= j.radio_button :pay_type, "daily" %>
+  <%= label :job, :pay_type, "daily" %>
+  <%= j.radio_button :pay_type, "weekly" %>
+  <%= label :job, :pay_type, "weekly" %>
+  <%= j.radio_button :pay_type, "per_unit" %>
+  <%= label :job, :pay_type, "per unit" %>
+  <%= j.radio_button :pay_type, "lump_sum" %>
+  <%= label :job, :pay_type, "lump sum" %>
+</fieldset>
+  
+<div>
+  <%= j.label "Post flyers about this job around campus?" %>
+  <%= j.check_box :flyering %>
+</div>
+<div>
   <%= submit_tag("Submit") %>
+</div>
 <% end %>

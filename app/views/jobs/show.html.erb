@@ -1,0 +1,14 @@
+<!--    t.string   "title"
+    t.text     "details"
+    t.string   "pay_type"
+    t.string   "work_unit"
+    t.decimal  "pay_rate",   precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+-->
+<h2><%= @job.title %></h2>
+<p><%= @job.details %></p>
+<p>Pay: <%= @job.pay_rate %> <%= @job.currency %>, <%= @job.pay_type %></p>
+<p>Updated <%= distance_of_time_in_words_to_now( @job.updated_at ) %> ago</p>
+<p><%= link_to "Back to list", action: "index", controller: "jobs" %></p>
