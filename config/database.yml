@@ -28,5 +28,3 @@ production:
   encoding: unicode
   database: lunchmo_production
   pool: 5
-  username: srv_lunchmo
-  password: 7sultrysilverpeacock
