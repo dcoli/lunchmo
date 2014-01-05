@@ -77,4 +77,15 @@ Lunchmo::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+   :ssl => true,
+   :address => "mail.magnoliatree.net",
+   :port => 465,
+   :domain => "magnoliatree.net",
+   :authentication => :login,
+   :user_name => "lunchmo@magnoliatree.net",
+   :password => "zuVTzMv7"
+ }
 end
